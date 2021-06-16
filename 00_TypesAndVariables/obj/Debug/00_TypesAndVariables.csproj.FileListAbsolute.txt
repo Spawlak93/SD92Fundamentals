@@ -1,0 +1,14 @@
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\00_TypesAndVariables.dll
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\00_TypesAndVariables.pdb
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\obj\Debug\00_TypesAndVariables.csprojAssemblyReference.cache
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\obj\Debug\00_TypesAndVariables.csproj.CoreCompileInputs.cache
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\obj\Debug\00_TypesAndVariables.csproj.CopyComplete
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\obj\Debug\00_TypesAndVariables.dll
+C:\EFAProjects\SD92\CSharpFundamentals\00_TypesAndVariables\obj\Debug\00_TypesAndVariables.pdb
