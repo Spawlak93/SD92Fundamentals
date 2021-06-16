@@ -39,9 +39,34 @@ namespace _03_Classes
         public string HairColor { get; set; }
         public int ShoeSize { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public int Age { get; set; }
+        public int Age
+        {
+            get
+            {
+                TimeSpan ageSpan = DateTime.Today - DateOfBirth;
+                double totalAgeInYears = ageSpan.Days / 365.25;
+                int years = Convert.ToInt32(Math.Floor(totalAgeInYears));
+                return years;
+            }
+        }
 
 
         //Methods
+        //Say Good Morning
+        public void SayGoodMorning()
+        {
+            Console.WriteLine("Good Morning");
+            return;
+        }
+
+        public void SayGoodMorning(string name)
+        {
+            Console.WriteLine($"Good Morning {name}");
+        }
+
+        public void SayGoodMorning(Person person)
+        {
+            Console.WriteLine($"Good Morning {person.FirstName}, my name is {FirstName}");
+        }
     }
 }

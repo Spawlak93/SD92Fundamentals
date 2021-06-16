@@ -47,6 +47,8 @@ namespace _03_Classes
 
             simon.FirstName = "Simon";
             simon.LastName = "Pawlak";
+            simon.DateOfBirth = new DateTime(1920, 07, 22);
+            simon.DateOfBirth = new DateTime(1920, 05, 22);
             //simon.FullName = simon.FirstName + " " + simon.LastName;
             simon.FirstName = "bob";
 
@@ -56,6 +58,15 @@ namespace _03_Classes
             Person amanda = new Person("Amanda", "Knight");
             //amanda.FullName = "Amanda Knight";
             //amanda.FullName = "Banana";
+
+
+            Person happy = new Person("Happy", "Gilmore");
+            happy.SayGoodMorning();
+
+            happy.SayGoodMorning("Jordan");
+
+            happy.SayGoodMorning(amanda);
+            amanda.SayGoodMorning(desmond);
         }
     }
 }
