@@ -9,7 +9,7 @@ namespace _07_RepositoryPattern_Repository
     //enum for our Maturity Rating
     public enum MaturityRating
     {
-        G,
+        G = 1,
         PG,
         PG_13,
         R,
@@ -62,3 +62,4 @@ namespace _07_RepositoryPattern_Repository
         }
     }
 }
+
