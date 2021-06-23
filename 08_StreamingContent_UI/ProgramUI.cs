@@ -33,7 +33,8 @@ namespace _08_StreamingContent_UI
                     "2. Find streaming content by title \n" +
                     "3. Add new streaming content\n" +
                     "4. Remove streaming content \n" +
-                    "5. Exit\n");
+                    "5. Update content\n" +
+                    "6. Exit\n");
 
                 //Reading user input
                 string userInput = Console.ReadLine();
@@ -57,6 +58,10 @@ namespace _08_StreamingContent_UI
                         DeleteContent();
                         break;
                     case "5":
+                        UpdateContent();
+                        //Update content
+                        break;
+                    case "6":
                         // Exit
                         isRunning = false;
                         break;
@@ -223,7 +228,7 @@ namespace _08_StreamingContent_UI
                 //Selecting object to be deleted
                 StreamingContent targetContent = contentList[targetIndex];
                 //Check to see if deleted
-                if(_streamingRepo.DeleteExistingContent(targetContent))
+                if (_streamingRepo.DeleteExistingContent(targetContent))
                 {
                     //success message
                     Console.WriteLine($"{targetContent.Title} removed from repo");
@@ -241,7 +246,95 @@ namespace _08_StreamingContent_UI
             }
             ReduceRed();
         }
+
+        //Update Content
+        private void UpdateContent()
+        {
+            Console.Clear();
+            //Original Title
+            //Ask the user what to update
+            Console.WriteLine("What title would you like to update?");
+            string userInput = Console.ReadLine();
+
+            //New Content (Updated content)
+            StreamingContent updatedContent = new StreamingContent();
+            //Title
+            Console.Write("What is the new Title:");
+            updatedContent.Title = Console.ReadLine();
+            //Description
+            Console.Write("What is the new Description:");
+            updatedContent.Description = Console.ReadLine();
+            //Star Rating
+            Console.Write("What is the new Star Rating:");
+            updatedContent.StarRating = int.Parse(Console.ReadLine());
+            //Genre
+            Console.Write("What is the new Genre: ");
+            updatedContent.Genre = Console.ReadLine();
+            //Maturity Rating
+            updatedContent.TypeOfMaturityRating = GetMaturityRatingInput();
+
+            _streamingRepo.UpdateExistingContent(userInput, updatedContent);
+            //Does this update
+            //Did they give me a title that exists
+            //Feedback Message to user
+            ReduceRed();
+        }
         //Helper Methods
+        private MaturityRating GetMaturityRatingInput()
+        {
+            //MaturityRating
+            Console.WriteLine("Select a maturity rating: \n" +
+                "1. G\n" +
+                "2. PG\n" +
+                "3. PG 13\n" +
+                "4. R\n" +
+                "5. NC 17\n" +
+                "6. TV G\n" +
+                "7. TV MA");
+
+            string stringMaturityRating = Console.ReadLine();
+
+            MaturityRating maturityRating;
+
+            //switch(stringMaturityRating)
+            //{
+            //    case "1":
+            //        maturityRating = MaturityRating.G;
+            //        break;
+            //    case "2":
+            //        maturityRating = MaturityRating.PG;
+            //        break;
+            //    case "3":
+            //        maturityRating = MaturityRating.PG_13;
+            //        break;
+            //    case "4":
+            //        maturityRating = MaturityRating.R;
+            //        break;
+            //    case "5":
+            //        maturityRating = MaturityRating.NC_17;
+            //        break;
+            //    case "6":
+            //        maturityRating = MaturityRating.TV_G;
+            //        break;
+            //    case "7":
+            //        maturityRating = MaturityRating.TV_MA;
+            //        break;
+
+            //    default:
+            //        maturityRating = MaturityRating.PG_13;
+            //        break;
+            //}
+
+            ////Casting to an enum
+            ////Casting into a MaturityRating  //Parsing into an int //String
+            //int intMaturityRating = int.Parse(stringMaturityRating);
+            //maturityRating = (MaturityRating)intMaturityRating;
+
+            //Can be done on one line
+            maturityRating = (MaturityRating)int.Parse(stringMaturityRating);
+
+            return maturityRating;
+        }
         private void DisplayContent(StreamingContent content)
         {
             Console.WriteLine($"Title: {content.Title}\n" +
