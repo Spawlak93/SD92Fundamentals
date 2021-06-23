@@ -46,6 +46,7 @@ namespace _08_StreamingContent_UI
                         break;
                     case "2":
                         //Find streaming content by title
+                        GetContentByTitle();
                         break;
                     case "3":
                         //Add new streaming content
@@ -53,15 +54,15 @@ namespace _08_StreamingContent_UI
                         break;
                     case "4":
                         //Remove streaming content
+                        DeleteContent();
                         break;
                     case "5":
                         // Exit
                         isRunning = false;
                         break;
                     default:
-                        Console.WriteLine("Please enter a valid number between 1 and 5 \n" +
-                            "Press Any Key to continue..");
-                        Console.ReadKey();
+                        Console.WriteLine("Please enter a valid number between 1 and 5");
+                        ReduceRed();
                         break;
 
                 }
@@ -155,27 +156,107 @@ namespace _08_StreamingContent_UI
             Console.Clear();
 
             //Get Content
-            List<StreamingContent> listOfContent =  _streamingRepo.GetContents();
+            List<StreamingContent> listOfContent = _streamingRepo.GetContents();
 
             //Loop through Contents
-            foreach(StreamingContent content in listOfContent)
+            foreach (StreamingContent content in listOfContent)
             {
                 //Console Write (Display Content)
-                Console.WriteLine($"Title: {content.Title}\n" +
+                DisplayContent(content);
+            }
+
+            ReduceRed();
+        }
+
+        //Display Content By Title
+        private void GetContentByTitle() //Search functionality by title
+        {
+            Console.Clear();
+            //What Title do we want
+            Console.WriteLine("What title are you looking for?");
+            //Getting user input
+            string title = Console.ReadLine();
+
+            //Get Content
+            StreamingContent content = _streamingRepo.GetContentByTitle(title);
+
+            //if we have it
+            if (content != null)
+            {
+                //Display Content
+                DisplayContent(content);
+            }
+            else
+            {
+                Console.WriteLine("Failed to find title");
+            }
+
+            ReduceRed();
+        }
+
+        //Delete Content
+        private void DeleteContent()
+        {
+            Console.Clear();
+            //Select the content to delete
+            //Get Content by title
+            Console.WriteLine("What title would you like to remove?");
+
+            //setting up a counter for future use
+            int count = 0;
+
+            //DisplayAllContent
+            List<StreamingContent> contentList = _streamingRepo.GetContents();
+            foreach (StreamingContent content in contentList)
+            {
+                count++;
+                Console.WriteLine($"{count}. {content.Title}");
+            }
+
+            int userInput = int.Parse(Console.ReadLine());
+            int targetIndex = userInput - 1;
+
+            //Did I get valid input
+            if (targetIndex >= 0 && targetIndex < contentList.Count())
+            {
+                //Delete the content
+                //Selecting object to be deleted
+                StreamingContent targetContent = contentList[targetIndex];
+                //Check to see if deleted
+                if(_streamingRepo.DeleteExistingContent(targetContent))
+                {
+                    //success message
+                    Console.WriteLine($"{targetContent.Title} removed from repo");
+                }
+                else
+                {
+                    //Fail Message
+                    Console.WriteLine("Sorry something went wrong");
+                }
+            }
+            //If invalid input
+            else
+            {
+                Console.WriteLine("Invalid Selection");
+            }
+            ReduceRed();
+        }
+        //Helper Methods
+        private void DisplayContent(StreamingContent content)
+        {
+            Console.WriteLine($"Title: {content.Title}\n" +
                     $"Description: {content.Description}\n" +
                     $"Genre: {content.Genre}\n" +
                     $"Rating: {content.StarRating}\n" +
                     $"Family Friendly: {content.IsFamilyFriendly}\n" +
                     $"Maturity Rating: {content.TypeOfMaturityRating}\n");
-            }
+        }
 
+        private void ReduceRed()
+        {
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
-
-        //Display Content By Title
-
-        //Delete Content
 
         //Seed Method
         private void SeedContentList()
