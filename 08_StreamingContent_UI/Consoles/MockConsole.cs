@@ -31,7 +31,7 @@ namespace _08_StreamingContent_UI.Consoles
 
         public string ReadLine()
         {
-            Output += "Giving Input of: " + UserInput.Peek() + "\n";
+            //Output += "Giving Input of: " + UserInput.Peek() + "\n";
             return UserInput.Dequeue();
         }
 

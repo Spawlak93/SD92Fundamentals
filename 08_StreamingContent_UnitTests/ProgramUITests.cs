@@ -10,7 +10,7 @@ namespace _08_StreamingContent_UnitTests
     public class ProgramUITests
     {
         [TestMethod]
-            //What we are testing    //What we are expecting
+        //What we are testing    //What we are expecting
         public void GetAll_OutputShouldContainListOfContent()
         {
             //Arrange
@@ -26,5 +26,41 @@ namespace _08_StreamingContent_UnitTests
 
             Assert.IsTrue(console.Output.Contains("Magical Kid causes trouble for aunt and uncle"));
         }
+
+        [TestMethod]
+        public void AddToRepo_ShouldSeeItemInList()
+        {
+            //Arrange
+            string customDesc = "This is a description";
+
+            List<string> commandList = new List<string> { "3", "Title", customDesc, "7", "SciFi", "2", "1", "6" };
+            MockConsole banana = new MockConsole(commandList);
+            ProgramUI ui = new ProgramUI(banana);
+
+            //Act
+            ui.Run();
+
+            Console.WriteLine(banana.Output);
+
+            //Assert
+            Assert.IsTrue(banana.Output.Contains(customDesc));
+        }
+
+        [TestMethod]
+        public void RemoveFromRepo_ShouldNotSeeItemInList()
+        {
+            //Arrange
+            var commandList = new List<string> { "4", "1","1",  "6" };
+            var deleteConsole = new MockConsole(commandList);
+            var ui = new ProgramUI(deleteConsole);
+            //Act
+            ui.Run();
+            Console.WriteLine(deleteConsole.Output);
+            //Assert
+            
+            Assert.IsFalse(deleteConsole.Output.Contains("Magical Kid causes trouble for aunt and uncle"));
+        }
+
     }
+
 }
